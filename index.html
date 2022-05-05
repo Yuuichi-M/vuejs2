@@ -12,9 +12,9 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <p>{{ message }}</p>
-    <!-- v-textの属性で{{}}と同じ意味の描画ができる -->
-    <p v-text="message"></p>
+    <!-- v-onceで一度だけ描画する -->
+    <p v-once>{{ message }}</p>
+    <p>{{ sayHi() }}</p>
   </div>
 </body>
 
@@ -23,8 +23,18 @@
     el: '#app',
     data: {
       message: 'HelloWorld!'
+    },
+
+    methods: {
+      sayHi() {
+        this.message = 'Hello VueJS'
+        return 'Hi'
+      }
     }
   })
 </script>
 
 </html>
+
+<!-- messageは2回描画されるよう定義されているが -->
+<!-- v-onceディレクティブを使うことで最初の1回を１度だけ描画する -->
