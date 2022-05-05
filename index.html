@@ -12,11 +12,9 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <!-- v-bindをオブジェクト形式で書く -->
-    <!-- 引数でhrefを定義した場合、[]で引数を属性として描画できる -->
-    <a :[attribute]="url">Google</a>
-    <!-- オブジェクト形式で定義した場合、v-bind=""で引数を描画できる -->
-    <a v-bind="twitterObject">Twitter</a>
+    <p>現在{{ number }}回クリックされています</p>
+    <!-- v-on:DOMイベントを使うことでイベント処理が実装できる -->
+    <button v-on:click="countUp">カウントアップ</button>
   </div>
 </body>
 
@@ -24,11 +22,13 @@
   new Vue({
     el: '#app',
     data: {
-      url: 'https://google.com',
-      attribute: 'href',
-      twitterObject: {
-        href: 'https://twitter.com',
-        id: 31
+      number: 0
+    },
+
+    //メソッド内で関数を定義し、v-on:DOMで処理を渡せる
+    methods: {
+      countUp: function() {
+        this.number += 1
       }
     }
   })
