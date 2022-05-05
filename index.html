@@ -15,6 +15,10 @@
     <p>現在{{ number }}回クリックされています</p>
     <!-- v-on:DOMイベントを使うことでイベント処理が実装できる -->
     <button v-on:click="countUp">カウントアップ</button>
+
+    <div>
+      <a v-bind="domEvent">v-onの引数となるDOMイベント一覧</a>
+    </div>
   </div>
 </body>
 
@@ -22,7 +26,10 @@
   new Vue({
     el: '#app',
     data: {
-      number: 0
+      number: 0,
+      domEvent: {
+        href: 'https://developer.mozilla.org/ja/docs/Web/Events'
+      }
     },
 
     //メソッド内で関数を定義し、v-on:DOMで処理を渡せる
