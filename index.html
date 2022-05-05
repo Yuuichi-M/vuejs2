@@ -12,9 +12,10 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <!-- v-onceで一度だけ描画する -->
-    <p v-once>{{ message }}</p>
-    <p>{{ sayHi() }}</p>
+    <!-- ２重中括弧だと文字列型で描画される -->
+    <div>{{ html }}</div>
+    <!-- v-htmlを使うとhtmlとして描画される -->
+    <div v-html="html"></div>
   </div>
 </body>
 
@@ -22,19 +23,9 @@
   new Vue({
     el: '#app',
     data: {
-      message: 'HelloWorld!'
-    },
-
-    methods: {
-      sayHi() {
-        this.message = 'Hello VueJS'
-        return 'Hi'
-      }
+      html: '<h1>h1です</h1>'
     }
   })
 </script>
 
 </html>
-
-<!-- messageは2回描画されるよう定義されているが -->
-<!-- v-onceディレクティブを使うことで最初の1回を１度だけ描画する -->
