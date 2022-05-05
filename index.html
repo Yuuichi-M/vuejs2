@@ -12,7 +12,9 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <p>{{ sayHi() }}</p>
+    <p>{{ message }}</p>
+    <!-- v-textの属性で{{}}と同じ意味の描画ができる -->
+    <p v-text="message"></p>
   </div>
 </body>
 
@@ -21,13 +23,6 @@
     el: '#app',
     data: {
       message: 'HelloWorld!'
-    },
-
-    methods: {
-      sayHi : function() {
-        //thisをつけることでメソッドからデータにアクセスできる(※重要)
-        return this.message;
-      }
     }
   })
 </script>
