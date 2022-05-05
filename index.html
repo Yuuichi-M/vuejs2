@@ -12,10 +12,11 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <!-- ２重中括弧だと文字列型で描画される -->
-    <div>{{ html }}</div>
-    <!-- v-htmlを使うとhtmlとして描画される -->
-    <div v-html="html"></div>
+    <!-- v-bindを使えば属性の値をデータに対応付ける -->
+    <a v-bind:href="url">Google</a></div>
+
+    <!-- <a :href="url">Google</a> -->
+    <!-- 上記のように省略しても属性の値として描画できる -->
   </div>
 </body>
 
@@ -23,7 +24,7 @@
   new Vue({
     el: '#app',
     data: {
-      html: '<h1>h1です</h1>'
+      url: 'https://google.com'
     }
   })
 </script>
