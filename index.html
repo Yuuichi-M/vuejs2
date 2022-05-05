@@ -12,8 +12,14 @@
   <script src="vue.js"></script>
 
   <div id="app">
+    <!-- 2重括弧でデータを描画する -->
     <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">メッセージ回転</button>
+    <!-- 定義したnumberに演算子で描画できる -->
+    <p>{{ number + 5 }}</p>
+    <!-- true,falseの値を返す -->
+    <p>{{ ok ? 'YES' : 'NO' }}</p>
+    <!-- 関数で定義した返り値を描画 -->
+    <p>{{ sayHi() }}</p>
   </div>
 </body>
 
@@ -21,11 +27,14 @@
   new Vue({
     el: '#app',
     data: {
-      message: 'HelloWorld!'
+      message: 'HelloWorld!',
+      number: 3,
+      ok: true
     },
+
     methods: {
-      reverseMessage: function () {
-        this.message = this.message.split('').reverse().join('')
+      sayHi : function() {
+        return 'Hi';
       }
     }
   })
