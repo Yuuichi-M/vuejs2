@@ -12,11 +12,11 @@
   <script src="vue.js"></script>
 
   <div id="app">
-    <!-- v-bindを使えば属性の値をデータに対応付ける -->
-    <a v-bind:href="url">Google</a></div>
-
-    <!-- <a :href="url">Google</a> -->
-    <!-- 上記のように省略しても属性の値として描画できる -->
+    <!-- v-bindをオブジェクト形式で書く -->
+    <!-- 引数でhrefを定義した場合、[]で引数を属性として描画できる -->
+    <a :[attribute]="url">Google</a>
+    <!-- オブジェクト形式で定義した場合、v-bind=""で引数を描画できる -->
+    <a v-bind="twitterObject">Twitter</a>
   </div>
 </body>
 
@@ -24,7 +24,12 @@
   new Vue({
     el: '#app',
     data: {
-      url: 'https://google.com'
+      url: 'https://google.com',
+      attribute: 'href',
+      twitterObject: {
+        href: 'https://twitter.com',
+        id: 31
+      }
     }
   })
 </script>
