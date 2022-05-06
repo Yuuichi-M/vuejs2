@@ -15,12 +15,12 @@
     <p>現在{{ number }}回クリックされています</p>
     <button v-on:click="countUp(3)">カウントアップ</button>
     <p v-on:mousemove="changeMousePosition($event, 10)">マウスを載せださい</p>
-    <!-- 簡略化されたイベント修飾子を使用してイベント取得する -->
-    <!-- stop: 処理を停止させるイベント修飾子(stopPropagationを簡略化したもの) -->
     <span v-on:mousemove.stop>反応しないで</span></p>
-    <!-- prevent: preventDefaultのイベント修飾子 デフォルトの挙動を停止させる -->
     <a v-on:click.prevent href="https://google.com">Google</a>
     <p>X:{{x}}, Y:{{y}}</p>
+    <!-- キー修飾子を使って、特定のキーボードを押下した時にイベントを発火させる -->
+    <!-- keyup: キー修飾子 -->
+    <input type="text" v-on:keyup.enter="myAlert">
   </div>
 </body>
 
@@ -39,6 +39,9 @@
       changeMousePosition: function(event, divideNumber) {
         this.x = event.clientX / divideNumber;
         this.y = event.clientY / divideNumber;
+      },
+      myAlert() {
+        alert('アラート!');
       }
     }
   })
