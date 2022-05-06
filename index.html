@@ -13,8 +13,9 @@
 
   <div id="app">
     <p>現在{{ number }}回クリックされています</p>
-    <!-- []使って、引数を動的に表現する -->
-    <button v-on:[event]="countUp">カウントアップ</button>
+    <!-- @マークでv-onを省略して書ける -->
+    <button @[event]="countUp">カウントアップ</button>
+    <button @click="countUp">カウントアップ</button>
   </div>
 </body>
 
