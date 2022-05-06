@@ -13,10 +13,9 @@
 
   <div id="app">
     <p>現在{{ number }}回クリックされています</p>
-    <button v-on:click="countUp">カウントアップ</button>
-    <!-- mousemove: マウスを乗せるとイベント発生 -->
-    <p v-on:mousemove="changeMousePosition">マウスを載せてください</p>
-    <!-- マウス位置のX軸、Y軸を表示 -->
+    <button v-on:click="countUp(3)">カウントアップ</button>
+    <!-- $event: 特別な引数の値を取る -->
+    <p v-on:mousemove="changeMousePosition($event, 10)">マウスを載せてください</p>
     <p>X:{{x}}, Y:{{y}}</p>
   </div>
 </body>
@@ -30,14 +29,14 @@
       y: 0
     },
     methods: {
-      countUp: function() {
-        this.number += 1
+      //times: v-onに引数を返せる
+      countUp: function(times) {
+        this.number += 1 * times
       },
-      //function(event)と書くとイベントが取得できる
-      changeMousePosition: function(event) {
-        //event.cliantX,Yでイベントを取得できる
-        this.x = event.clientX;
-        this.y = event.clientY;
+      //divideNumber: 値を引数分割る
+      changeMousePosition: function(event, divideNumber) {
+        this.x = event.clientX / divideNumber;
+        this.y = event.clientY / divideNumber;
       }
     }
   })
