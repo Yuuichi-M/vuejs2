@@ -13,12 +13,11 @@
 
   <div id="app">
     <p>現在{{ number }}回クリックされています</p>
-    <!-- v-on:DOMイベントを使うことでイベント処理が実装できる -->
     <button v-on:click="countUp">カウントアップ</button>
-
-    <div>
-      <a v-bind="domEvent">v-onの引数となるDOMイベント一覧</a>
-    </div>
+    <!-- mousemove: マウスを乗せるとイベント発生 -->
+    <p v-on:mousemove="changeMousePosition">マウスを載せてください</p>
+    <!-- マウス位置のX軸、Y軸を表示 -->
+    <p>X:{{x}}, Y:{{y}}</p>
   </div>
 </body>
 
@@ -27,15 +26,18 @@
     el: '#app',
     data: {
       number: 0,
-      domEvent: {
-        href: 'https://developer.mozilla.org/ja/docs/Web/Events'
-      }
+      x: 0,
+      y: 0
     },
-
-    //メソッド内で関数を定義し、v-on:DOMで処理を渡せる
     methods: {
       countUp: function() {
         this.number += 1
+      },
+      //function(event)と書くとイベントが取得できる
+      changeMousePosition: function(event) {
+        //event.cliantX,Yでイベントを取得できる
+        this.x = event.clientX;
+        this.y = event.clientY;
       }
     }
   })
