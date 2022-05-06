@@ -14,8 +14,12 @@
   <div id="app">
     <p>現在{{ number }}回クリックされています</p>
     <button v-on:click="countUp(3)">カウントアップ</button>
-    <!-- $event: 特別な引数の値を取る -->
-    <p v-on:mousemove="changeMousePosition($event, 10)">マウスを載せてください</p>
+    <p v-on:mousemove="changeMousePosition($event, 10)">マウスを載せださい</p>
+    <!-- 簡略化されたイベント修飾子を使用してイベント取得する -->
+    <!-- stop: 処理を停止させるイベント修飾子(stopPropagationを簡略化したもの) -->
+    <span v-on:mousemove.stop>反応しないで</span></p>
+    <!-- prevent: preventDefaultのイベント修飾子 デフォルトの挙動を停止させる -->
+    <a v-on:click.prevent href="https://google.com">Google</a>
     <p>X:{{x}}, Y:{{y}}</p>
   </div>
 </body>
@@ -29,11 +33,9 @@
       y: 0
     },
     methods: {
-      //times: v-onに引数を返せる
       countUp: function(times) {
         this.number += 1 * times
       },
-      //divideNumber: 値を引数分割る
       changeMousePosition: function(event, divideNumber) {
         this.x = event.clientX / divideNumber;
         this.y = event.clientY / divideNumber;
