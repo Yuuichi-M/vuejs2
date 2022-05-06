@@ -10,12 +10,10 @@
 
 <body>
   <script src="vue.js"></script>
-
+  <!-- v-model: 双方向バインディングして、Viewでモデルのデータを変更ができる -->
   <div id="app">
-    <p>現在{{ number }}回クリックされています</p>
-    <!-- @マークでv-onを省略して書ける -->
-    <button @[event]="countUp">カウントアップ</button>
-    <button @click="countUp">カウントアップ</button>
+    <input type="text" v-model="message">
+    <h1>{{ message }}</h1>
   </div>
 </body>
 
@@ -23,13 +21,7 @@
   new Vue({
     el: '#app',
     data: {
-      number: 0,
-      event: 'click'
-    },
-    methods: {
-      countUp: function() {
-        this.number += 1;
-      }
+      message: 'こんにちは'
     }
   })
 </script>
